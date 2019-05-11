@@ -1,9 +1,10 @@
 package proxy
 
 import (
+	"sync"
+
 	"github.com/rebornwwp/easyproxy/config"
 	"github.com/rebornwwp/easyproxy/structure"
-	"sync"
 )
 
 type ProxyData struct {
