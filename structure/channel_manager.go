@@ -1,6 +1,10 @@
 package structure
 
-import "sync"
+import (
+	"errors"
+	"github.com/rebornwwp/easyproxy/util"
+	"sync"
+)
 
 type ChannelManager struct {
 	channels []Channel
@@ -18,14 +22,21 @@ func (channelManager *ChannelManager) Init() {
 
 func (channelManager *ChannelManager) PutChannel(channel *Channel) {
 	channelManager.mutex.Lock()
+	defer channelManager.mutex.Unlock()
 	channelManager.channels = append(channelManager.channels, *channel)
 	channelManager.mapSrc[channel.SrcUrl()] = channel
 	channelManager.mapSrc[channel.DstUrl()] = channel
-	channelManager.mutex.Unlock()
 }
 
 func (channelManager *ChannelManager) DeleteChannel(channel *Channel) {
-
+	channelManager.mutex.Lock()
+	defer channelManager.mutex.Unlock()
+	index := util.SliceIndex(channelManager.channels, channel)
+	if index >= 0 {
+		channelManager.channels = append(channelManager.channels[0:index], channelManager.channels[index+1:]...)
+		deleteMap(channelManager.mapSrc, channel.SrcUrl())
+		deleteMap(channelManager.mapDst, channel.DstUrl())
+	}
 }
 
 func (channelManager *ChannelManager) GetChannels() []Channel {
@@ -33,6 +44,15 @@ func (channelManager *ChannelManager) GetChannels() []Channel {
 }
 
 func (channelManager *ChannelManager) Check() (error, error) {
+	var srcErr, dstErr error
+	length := len(channelManager.channels)
+	if length != len(channelManager.mapSrc) {
+		srcErr = errors.New("client socket close maybe error")
+	}
+	if length != len(channelManager.mapDst) {
+		dstErr = errors.New("server socket close maybe error")
+	}
+	return srcErr, dstErr
 }
 
 func deleteMap(_map map[string]*Channel, url string) {
