@@ -44,6 +44,8 @@ func (channelManager *ChannelManager) GetChannels() []Channel {
 }
 
 func (channelManager *ChannelManager) Check() (error, error) {
+	channelManager.mutex.Lock()
+	defer channelManager.mutex.Unlock()
 	var srcErr, dstErr error
 	length := len(channelManager.channels)
 	if length != len(channelManager.mapSrc) {
@@ -63,6 +65,8 @@ func deleteMap(_map map[string]*Channel, url string) {
 }
 
 func (channelManager *ChannelManager) Clean() {
+	channelManager.mutex.Lock()
+	defer channelManager.mutex.Unlock()
 	for _, channel := range channelManager.channels {
 		deleteMap(channelManager.mapSrc, channel.SrcUrl())
 		deleteMap(channelManager.mapDst, channel.DstUrl())

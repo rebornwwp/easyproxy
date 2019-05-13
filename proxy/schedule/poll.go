@@ -21,8 +21,8 @@ func (counter *Counter) Inc() {
 
 func (counter *Counter) Get() int {
 	counter.mutex.Lock()
+	defer counter.mutex.Unlock()
 	ans := counter.count
-	counter.mutex.Unlock()
 	return ans
 }
 

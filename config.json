@@ -8,8 +8,8 @@
   "maxprocessor": 1,
   "backends": [
     {
-      "host": "11.239.169.230",
-      "port": 3306
+      "host": "10.112.117.76",
+      "port": 22
     }
   ]
 }

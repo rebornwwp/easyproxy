@@ -18,6 +18,6 @@ func (channel *Channel) DstUrl() string {
 }
 
 func (channel *Channel) Close() {
-	_ := channel.Dst.Close()
-	_ := channel.Src.Close()
+	channel.Dst.Close()
+	channel.Src.Close()
 }

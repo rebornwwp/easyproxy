@@ -1,6 +1,8 @@
 package util
 
 import (
+	"log"
+	"path/filepath"
 	"reflect"
 	"strconv"
 	"strings"
@@ -42,4 +44,16 @@ func SliceIndex(slice interface{}, element interface{}) int {
 		}
 	}
 	return index
+}
+
+func HomePath() string {
+	return AbsolutePath(".")
+}
+
+func AbsolutePath(path string) string {
+	absolutePath, err := filepath.Abs(path)
+	if err != nil {
+		log.Println("current path err", err)
+	}
+	return absolutePath
 }

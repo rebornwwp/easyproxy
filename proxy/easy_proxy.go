@@ -1,13 +1,14 @@
 package proxy
 
 import (
-	"github.com/rebornwwp/easyproxy/config"
-	"github.com/rebornwwp/easyproxy/proxy/schedule"
-	"github.com/rebornwwp/easyproxy/structure"
 	"io"
 	"log"
 	"net"
 	"time"
+
+	"github.com/rebornwwp/easyproxy/config"
+	"github.com/rebornwwp/easyproxy/proxy/schedule"
+	"github.com/rebornwwp/easyproxy/structure"
 )
 
 const (
@@ -60,23 +61,23 @@ func (proxy *EasyProxy) Dispatch(conn net.Conn) {
 func (proxy *EasyProxy) transfer(local net.Conn, remote string) {
 	remoteConn, err := net.DialTimeout("tcp", remote, DefaultTimeOut*time.Second)
 	if err != nil {
-		_ := local.Close()
+		local.Close()
 		proxy.Clean(remote)
 		log.Println("connect backend err", err)
 		return
 	}
 	sync := make(chan int)
-	channel := structure.Channel{Src: local, Dst: remoteConn}
-	go proxy.putChannel(&channel)
+	channel := &structure.Channel{Src: local, Dst: remoteConn}
+	go proxy.putChannel(channel)
 	go proxy.safeCopy(local, remoteConn, sync)
 	go proxy.safeCopy(remoteConn, local, sync)
-	go proxy.closeChannel(&channel, sync)
-
+	go proxy.closeChannel(channel, sync)
 }
 
 func (proxy *EasyProxy) putChannel(channel *structure.Channel) {
 	proxy.data.ChannelManager.PutChannel(channel)
 }
+
 func (proxy *EasyProxy) safeCopy(from net.Conn, to net.Conn, sync chan<- int) {
 	io.Copy(from, to)
 	defer from.Close()

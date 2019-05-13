@@ -1,0 +1,22 @@
+2019/05/13 20:59:15 /Users/reborn/go/src/github.com/rebornwwp/easyproxy/log/log.go:22: success create log file, logs/proxy.log
+2019/05/13 20:59:15 /Users/reborn/go/src/github.com/rebornwwp/easyproxy/gateway/server.go:43: proxy server start ok
+2019/05/13 20:59:25 /Users/reborn/go/src/github.com/rebornwwp/easyproxy/gateway/server.go:52: client connect to server error: accept tcp 127.0.0.1:9527: use of closed network connection
+2019/05/13 20:59:51 /Users/reborn/go/src/github.com/rebornwwp/easyproxy/log/log.go:22: success create log file, logs/proxy.log
+2019/05/13 20:59:51 /Users/reborn/go/src/github.com/rebornwwp/easyproxy/gateway/server.go:43: proxy server start ok
+2019/05/13 21:00:09 /Users/reborn/go/src/github.com/rebornwwp/easyproxy/proxy/easy_proxy.go:84: hello world
+2019/05/13 21:00:09 /Users/reborn/go/src/github.com/rebornwwp/easyproxy/proxy/easy_proxy.go:84: hello world
+2019/05/13 21:00:32 /Users/reborn/go/src/github.com/rebornwwp/easyproxy/proxy/easy_proxy.go:84: hello world
+2019/05/13 21:00:32 /Users/reborn/go/src/github.com/rebornwwp/easyproxy/proxy/easy_proxy.go:84: hello world
+2019/05/13 21:01:21 /Users/reborn/go/src/github.com/rebornwwp/easyproxy/gateway/server.go:52: client connect to server error: accept tcp 127.0.0.1:9527: use of closed network connection
+2019/05/13 21:01:21 /Users/reborn/go/src/github.com/rebornwwp/easyproxy/proxy/easy_proxy.go:84: hello world
+2019/05/13 21:01:21 /Users/reborn/go/src/github.com/rebornwwp/easyproxy/gateway/server.go:52: client connect to server error: accept tcp 127.0.0.1:9527: use of closed network connection
+2019/05/13 21:02:39 /Users/reborn/go/src/github.com/rebornwwp/easyproxy/log/log.go:22: success create log file, logs/proxy.log
+2019/05/13 21:02:39 /Users/reborn/go/src/github.com/rebornwwp/easyproxy/gateway/server.go:43: proxy server start ok
+2019/05/13 21:03:37 /Users/reborn/go/src/github.com/rebornwwp/easyproxy/proxy/easy_proxy.go:84: hello world
+2019/05/13 21:03:37 /Users/reborn/go/src/github.com/rebornwwp/easyproxy/proxy/easy_proxy.go:84: hello world
+2019/05/13 21:03:56 /Users/reborn/go/src/github.com/rebornwwp/easyproxy/proxy/easy_proxy.go:84: hello world
+2019/05/13 21:03:56 /Users/reborn/go/src/github.com/rebornwwp/easyproxy/proxy/easy_proxy.go:84: hello world
+2019/05/13 21:04:08 /Users/reborn/go/src/github.com/rebornwwp/easyproxy/proxy/easy_proxy.go:84: hello world
+2019/05/13 21:04:08 /Users/reborn/go/src/github.com/rebornwwp/easyproxy/proxy/easy_proxy.go:84: hello world
+2019/05/13 21:05:09 /Users/reborn/go/src/github.com/rebornwwp/easyproxy/gateway/server.go:52: client connect to server error: accept tcp 127.0.0.1:9527: use of closed network connection
+2019/05/13 21:05:09 /Users/reborn/go/src/github.com/rebornwwp/easyproxy/gateway/server.go:52: client connect to server error: accept tcp 127.0.0.1:9527: use of closed network connection
